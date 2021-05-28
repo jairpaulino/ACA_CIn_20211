@@ -24,8 +24,8 @@ class VetorOrdenadoAdjacente:
         self.numeroElementos += 1
         
     def getPrimeiro(self):
-        return self.adjacentes[0].cidade
+        return self.adjacentes[0].estacao 
 
     def mostrar(self):
         for i in range(0, self.numeroElementos):
-            print('{} - {}'.format(self.adjacentes[i].cidade.nome, self.adjacentes[i].distanciaAEstrela))
+            print('{} - {}'.format(self.adjacentes[i].estacao.nome, self.adjacentes[i].distanciaAEstrela))

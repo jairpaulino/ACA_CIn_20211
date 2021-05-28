@@ -15,8 +15,8 @@ class AEstrela:
         else:
             self.fronteira = VetorOrdenadoAdjacente(len(atual.adjacentes))
             for a in atual.adjacentes:
-                if a.cidade.visitado == False:
-                    a.cidade.visitado = True
+                if a.estacao.visitado == False:
+                    a.estacao.visitado = True
                     self.fronteira.inserir(a)
             self.fronteira.mostrar()
             if self.fronteira.getPrimeiro() != None:
@@ -24,5 +24,5 @@ class AEstrela:
                 
 from Mapa import Mapa
 mapa = Mapa()
-aestrela = AEstrela(mapa.curitiba)
-aestrela.buscar(mapa.portoUniao)
+aestrela = AEstrela(mapa.E12)
+aestrela.buscar(mapa.E01)
