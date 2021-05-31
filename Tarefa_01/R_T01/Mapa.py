@@ -1,86 +1,69 @@
 from Adjacente import Adjacente
-from Cidade import Cidade
+from Estacao import Estacao
 
 class Mapa:
     
-    portoUniao = Cidade("Porto União")
-    pauloFrontin = Cidade("Paulo Frontin")
-    canoinhas = Cidade("Canoinhas")
-    irati = Cidade("Irati")
-    palmeira = Cidade("Palmeira")
-    campoLargo = Cidade("Campo Largo")
-    curitiba = Cidade("Curitiba")
-    balsaNova = Cidade("Balsa Nova")
-    araucaria = Cidade("Araucária")
-    saoJose = Cidade("São José dos Pinhais")
-    contenda = Cidade("Contenda")
-    mafra = Cidade("Mafra")
-    tijucas = Cidade("Tijucas do Sul")
-    lapa = Cidade("Lapa")
-    saoMateus = Cidade("São Mateus do Sul")
-    tresBarras = Cidade("Três Barras")
+    E01 = Estacao("E01", 27.3)
+    E02 = Estacao("E02", 20.9)
+    E03 = Estacao("E03", 19.1)
+    E04 = Estacao("E04", 18.6)
+    E05 = Estacao("E05", 24.8)
+    E06 = Estacao("E06", 27.6)
+    E07 = Estacao("E07", 25.7)
+    E08 = Estacao("E08", 6.4)
+    E09 = Estacao("E09", 10.9)
+    E10 = Estacao("E10", 24.2)
+    E11 = Estacao("E11", 14.2)
+    E12 = Estacao("E12", 0)   
+    E13 = Estacao("E13", 28.8)
+    E14 = Estacao("E14", 33.6)
+    
+    E01.addEstacaoAdjacente(Adjacente(E02, 10))
+    
+    E02.addEstacaoAdjacente(Adjacente(E01, 10))
+    E02.addEstacaoAdjacente(Adjacente(E03, 8.5))
+    E02.addEstacaoAdjacente(Adjacente(E09, 10))
+    E02.addEstacaoAdjacente(Adjacente(E10, 3.5))
+    
+    E03.addEstacaoAdjacente(Adjacente(E02, 8.5))
+    E03.addEstacaoAdjacente(Adjacente(E04, 6.3))
+    E03.addEstacaoAdjacente(Adjacente(E09, 9.4))
+    E03.addEstacaoAdjacente(Adjacente(E13, 18.7))
 
-    portoUniao.addCidadeAdjacente(Adjacente(pauloFrontin))  
-    portoUniao.addCidadeAdjacente(Adjacente(canoinhas))
-    portoUniao.addCidadeAdjacente(Adjacente(saoMateus))
-       
-    pauloFrontin.addCidadeAdjacente(Adjacente(portoUniao))
-    pauloFrontin.addCidadeAdjacente(Adjacente(irati))
+    E04.addEstacaoAdjacente(Adjacente(E03, 6.3))
+    E04.addEstacaoAdjacente(Adjacente(E05, 13))
+    E04.addEstacaoAdjacente(Adjacente(E08, 15.3))
+    E04.addEstacaoAdjacente(Adjacente(E13, 12.8))
     
-    canoinhas.addCidadeAdjacente(Adjacente(portoUniao))
-    canoinhas.addCidadeAdjacente(Adjacente(tresBarras))
-    canoinhas.addCidadeAdjacente(Adjacente(mafra))
+    E05.addEstacaoAdjacente(Adjacente(E04, 13))
+    E05.addEstacaoAdjacente(Adjacente(E06, 3))
+    E05.addEstacaoAdjacente(Adjacente(E07, 2.4))
+    E05.addEstacaoAdjacente(Adjacente(E08, 30))
     
-    irati.addCidadeAdjacente(Adjacente(pauloFrontin))
-    irati.addCidadeAdjacente(Adjacente(palmeira))
-    irati.addCidadeAdjacente(Adjacente(saoMateus))
-    
-    palmeira.addCidadeAdjacente(Adjacente(irati))
-    palmeira.addCidadeAdjacente(Adjacente(saoMateus))
-    palmeira.addCidadeAdjacente(Adjacente(campoLargo))
-    
-    campoLargo.addCidadeAdjacente(Adjacente(palmeira))
-    campoLargo.addCidadeAdjacente(Adjacente(balsaNova))
-    campoLargo.addCidadeAdjacente(Adjacente(curitiba))
-    
-    curitiba.addCidadeAdjacente(Adjacente(campoLargo))
-    curitiba.addCidadeAdjacente(Adjacente(balsaNova))
-    curitiba.addCidadeAdjacente(Adjacente(araucaria))
-    curitiba.addCidadeAdjacente(Adjacente(saoJose))
-    
-    balsaNova.addCidadeAdjacente(Adjacente(curitiba))
-    balsaNova.addCidadeAdjacente(Adjacente(campoLargo))
-    balsaNova.addCidadeAdjacente(Adjacente(contenda))
-    
-    araucaria.addCidadeAdjacente(Adjacente(curitiba))
-    araucaria.addCidadeAdjacente(Adjacente(contenda))
-    
-    saoJose.addCidadeAdjacente(Adjacente(curitiba))
-    saoJose.addCidadeAdjacente(Adjacente(tijucas))
-    
-    contenda.addCidadeAdjacente(Adjacente(balsaNova))
-    contenda.addCidadeAdjacente(Adjacente(araucaria))
-    contenda.addCidadeAdjacente(Adjacente(lapa))
+    E06.addEstacaoAdjacente(Adjacente(E05, 3))
 
-    mafra.addCidadeAdjacente(Adjacente(tijucas))
-    mafra.addCidadeAdjacente(Adjacente(lapa))
-    mafra.addCidadeAdjacente(Adjacente(canoinhas))
+    E07.addEstacaoAdjacente(Adjacente(E05, 2.4))
     
-    tijucas.addCidadeAdjacente(Adjacente(mafra))
-    tijucas.addCidadeAdjacente(Adjacente(saoJose))
+    E08.addEstacaoAdjacente(Adjacente(E05, 30))
+    E08.addEstacaoAdjacente(Adjacente(E04, 15.3))
+    E08.addEstacaoAdjacente(Adjacente(E09, 9.6))
+    E08.addEstacaoAdjacente(Adjacente(E12, 6.4))
 
-    lapa.addCidadeAdjacente(Adjacente(contenda))
-    lapa.addCidadeAdjacente(Adjacente(saoMateus))
-    lapa.addCidadeAdjacente(Adjacente(mafra))
+    E09.addEstacaoAdjacente(Adjacente(E02, 10))
+    E09.addEstacaoAdjacente(Adjacente(E03, 9.4))
+    E09.addEstacaoAdjacente(Adjacente(E08, 9.6))
+    E09.addEstacaoAdjacente(Adjacente(E11, 12.2))
     
-    saoMateus.addCidadeAdjacente(Adjacente(palmeira))
-    saoMateus.addCidadeAdjacente(Adjacente(irati))
-    saoMateus.addCidadeAdjacente(Adjacente(lapa))
-    saoMateus.addCidadeAdjacente(Adjacente(tresBarras))
-    saoMateus.addCidadeAdjacente(Adjacente(portoUniao))
+    E10.addEstacaoAdjacente(Adjacente(E02, 3.5))
+
+    E11.addEstacaoAdjacente(Adjacente(E09, 12.2))
     
-    tresBarras.addCidadeAdjacente(Adjacente(saoMateus))
-    tresBarras.addCidadeAdjacente(Adjacente(canoinhas))
-
-
-
+    E12.addEstacaoAdjacente(Adjacente(E08, 6.4))
+    
+    E13.addEstacaoAdjacente(Adjacente(E04, 12.8))
+    E13.addEstacaoAdjacente(Adjacente(E14, 5.1))
+    
+    '''mapa = Mapa()
+    for i in range(len(mapa.E13.adjacentes)):
+        print(mapa.E13.adjacentes[i].estacao.nome)'''
+    
