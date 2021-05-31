@@ -18,11 +18,18 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
     
     # Calculating cost function
     cost = 0
-    for (i in 1:length(adjacent)){#i=4
+    for(i in 1:length(adjacent)){#i=1
+      # Analysing if the point has already been visited
       if(visited[adjacent[i]] == FALSE){
-        cost[i] = distConnection[currentPoint, adjacent[i]] + distReal[destiny, adjacent[i]]
+        nextAdjacent = which(is.na(distConnection[adjacent[i], ]) %in% FALSE)
+        # Analysing if there is an exit route or if it is the last point
+        if(length(nextAdjacent) > 1 | adjacent[i] == destiny){
+          cost[i] = distConnection[currentPoint, adjacent[i]] + distReal[destiny, adjacent[i]]
+        }else{
+          cost[i] = NA # Delete the point if it is unfeasible
+        }
       }else{
-        cost[i] = NA
+        cost[i] = NA # Delete the point if it has already been visited
       }
     }
     
@@ -31,6 +38,7 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
     print(paste('-----------', move, '-----------'))
     print(costMatrix)
 
+    # Updating information
     posCostMin = which(cost %in% min(na.omit(cost)))
     visited[adjacent[posCostMin]] = TRUE
     distance = distance + distConnection[currentPoint, adjacent[posCostMin]]
