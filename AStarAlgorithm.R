@@ -6,11 +6,11 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
   currentPoint = origin
   route = origin
   move = 1
+  distance = 0
   
   visited = rep(FALSE, 14)
   visited[currentPoint] = TRUE
   
-  j = 0
   repeat{
     
     # Finding adjacent stations
@@ -33,6 +33,7 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
 
     posCostMin = which(cost %in% min(na.omit(cost)))
     visited[adjacent[posCostMin]] = TRUE
+    distance = distance + distConnection[currentPoint, adjacent[posCostMin]]
     currentPoint = adjacent[posCostMin]
     route = c(route, currentPoint)
     move = move + 1
@@ -44,7 +45,8 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
   }
   print("The final route is: ")
   print(route)
-  
+  print(paste("The total time spent was: ", round(distance/30,2), " hour(s)", sep=""))
+
 }
 
 
