@@ -1,7 +1,13 @@
-getAStarPath = function(origin, destiny, distConnection = distConnection_df, distReal = distReal_df){
+getAStarPath = function(origin, destiny, 
+                        distConnection = distConnection_df, 
+                        distReal = distReal_df, detailedPath = F){
   
   #origin = 1; destiny = 12; 
   #distConnection = distConnection_df; distReal = distReal_df
+  
+  if(origin == destiny){
+    return("The Values 'Origin' and 'Destiny' must  to be different!")
+  }
   
   currentPoint = origin
   route = origin
@@ -33,10 +39,16 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
       }
     }
     
-    costMatrix = na.omit(data.frame(adjacent, cost))
-    
-    print(paste('-----------', move, '-----------'))
-    print(costMatrix)
+    if(detailedPath == T){
+      costMatrix = data.frame(adjacent, cost)
+      print(paste('-----------', move, '-----------'))
+      print(costMatrix)
+      costMatrix = na.omit(data.frame(adjacent, cost))
+    }else{
+      costMatrix = na.omit(data.frame(adjacent, cost))
+      print(paste('-----------', move, '-----------'))
+      print(costMatrix)
+    }
 
     # Updating information
     posCostMin = which(cost %in% min(na.omit(cost)))
@@ -49,12 +61,13 @@ getAStarPath = function(origin, destiny, distConnection = distConnection_df, dis
     if(currentPoint == destiny){
       break
     }
-    
   }
+  
   print("The final route is: ")
   print(route)
   print(paste("The total time spent was: ", round(distance/30,2), " hour(s)", sep=""))
-
+  return(list("Route" = route,
+              timeSpent = round(distance/30,2)))
 }
 
 
