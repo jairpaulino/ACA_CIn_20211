@@ -18,8 +18,9 @@ rownames(distReal_df) = colnames(distReal_df)
 #View(distConnection_df); View(distReal_df)
 
 # Calculating patihing with A* algorithm
-getAStarPath(origin = 5, 
-             destiny = 10,
-             distReal = distReal_df, 
-             distConnection = distConnection_df)
+AStarPath = getAStarPath(origin = 5, 
+                         destiny = 7,
+                         distReal = distReal_df, 
+                         distConnection = distConnection_df,
+                         detailedPath = F)
 
