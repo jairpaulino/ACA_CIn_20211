@@ -5,10 +5,9 @@
 # Cleaning R environment
 rm(list=ls()); graphics.off() 
 
-# Libraries
-
 # Importing functions
 source("AStarAlgorithm.R")
+source("AStarAlgorithmModified.R")
 
 # Importing data
 distConnection_df = read.csv(file = "Tarefa_01/dist_conexao.csv", sep=";")
@@ -17,10 +16,19 @@ distReal_df = read.csv(file = "Tarefa_01/dist_real_direta.csv", sep=";")
 rownames(distReal_df) = colnames(distReal_df)
 #View(distConnection_df); View(distReal_df)
 
-# Calculating patihing with A* algorithm
-AStarPath = getAStarPath(origin = 5, 
-                         destiny = 7,
-                         distReal = distReal_df, 
+# Calculating path with A* algorithm
+AStarPath = getAStarPath(origin = 1,
+                         destiny = 12,
+                         distReal = distReal_df,
                          distConnection = distConnection_df,
-                         detailedPath = F)
+                         detailedPath = T)
+
+# Calculating path with A* Modified algorithm
+AStarPathModified = AStarAlgorithmModified(origin = 1,
+                                   destiny = 12,
+                                   distReal = distReal_df, 
+                                   distConnection = distConnection_df,
+                                   detailedPath = T)
+
+
 
