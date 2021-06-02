@@ -1,5 +1,7 @@
 library(shiny)
 
+source("AStarAlgorithm.R")
+
 ui = fluidPage(
   
   titlePanel("A* pathfinding algorithm"),
@@ -27,16 +29,11 @@ ui = fluidPage(
 
 server = function(input, output, session){
   
-  # AStarPath = reactive({getAStarPath(origin = input$Origin, 
-  #                                    destiny =  input$Destiny,
-  #                                    distReal = distReal_df, 
-  #                                    distConnection = distConnection_df)})
-
   output$Route = renderText({ 
     AStarPath = getAStarPath(origin = input$Origin,
-                          destiny =  input$Destiny,
-                          distReal = distReal_df,
-                          distConnection = distConnection_df)
+                             destiny =  input$Destiny,
+                             distReal = distReal_df,
+                             distConnection = distConnection_df)
     AStarPath[[1]]
   })
   
@@ -45,7 +42,7 @@ server = function(input, output, session){
                              destiny =  input$Destiny,
                              distReal = distReal_df, 
                              distConnection = distConnection_df)
-    AStarPath$timeSpent
+    AStarPath$TimeSpent
   })
 
 }
